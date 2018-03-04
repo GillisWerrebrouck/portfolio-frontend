@@ -1,0 +1,268 @@
+main {
+  > div {
+    width: $defaultWidth;
+    max-width: $maxWidth;
+    @include large {
+      width: $largeWidth;
+    }
+    @include medium {
+      width: $mediumWidth;
+    }
+    @include small {
+      width: $smallWidth;
+      margin: 0 2%;
+      width: 96%;
+    }
+    margin: 0 auto;
+    margin-top: 50px;
+    > h1 {
+      margin-bottom: 35px;
+      margin-top: 55px;
+    }
+    .projects, .blogposts {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+    .project__preview, .blogpost__preview {
+      position: relative;
+      width: calc((100% / #{$projectPreviewDefaultColumns}) - ((#{$projectPreviewDefaultColumnsGap} / #{$projectPreviewDefaultColumns}) * (#{$projectPreviewDefaultColumns} - 1)));
+      max-width: calc((100% / #{$projectPreviewDefaultColumns}) - ((#{$projectPreviewDefaultColumnsGap} / #{$projectPreviewDefaultColumns}) * (#{$projectPreviewDefaultColumns} - 1)));
+      @include medium {
+        width: calc((100% / #{$projectPreviewMediumColumns}) - ((#{$projectPreviewDefaultColumnsGap} / #{$projectPreviewMediumColumns}) * (#{$projectPreviewMediumColumns} - 1)));
+        max-width: calc((100% / #{$projectPreviewMediumColumns}) - ((#{$projectPreviewDefaultColumnsGap} / #{$projectPreviewMediumColumns}) * (#{$projectPreviewMediumColumns} - 1)));
+      }
+      @include small {
+        width: 100%;
+        max-width: 100%;
+      }
+      display: inline-block;
+      flex-grow: 1;
+      background-color: $colorBlueLight;
+      height: 300px;
+      padding: 20px;
+      margin-bottom: #{$projectPreviewDefaultColumnsGap};
+      text-decoration: none;
+      background-size: cover;
+      background-position: center;
+      &:hover {
+        transform: scale(1.051);
+        @include small {
+          transform: scale(1);
+        }
+      }
+      &:not(:nth-child(#{$projectPreviewDefaultColumns}n)) {
+        margin-right: #{$projectPreviewDefaultColumnsGap};
+      }
+      @include medium {
+        &:not(:nth-child(#{$projectPreviewDefaultColumns}n)) {
+          margin-right: 0;
+        }
+        &:not(:nth-child(#{$projectPreviewMediumColumns}n)) {
+          margin-right: #{$projectPreviewDefaultColumnsGap};
+        }
+      }
+      @include small {
+        &:not(:nth-child(#{$projectPreviewMediumColumns}n)) {
+          margin-right: 0;
+        }
+      }
+      h2 {
+        color: #FFF;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.65);
+        margin: 0;
+      }
+      p {
+        color: #FFF;
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+      .date {
+        position: relative;
+        left: -4px;
+        display: inline-block;
+        background-color: rgba(255, 255, 255, 0.65);
+        color: #333;
+        border-radius: 12px;
+        padding: 3px 8px;
+        font-size: 0.8em;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+      .short_description, .short_post {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 20px;
+        text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.65);
+      }
+    }
+  }
+  #about {
+    position: relative;
+    margin-top: 0;
+    height: calc(100vh - #{$headerHeight});
+    @include large {
+      height: calc(100vh - (#{$headerHeight} * 1.2));
+    }
+    @include medium {
+      height: calc(100vh - (#{$headerHeight} * 1.5));
+    }
+    min-height: 600px;
+    #about__statement {
+      position: relative;
+      top: 10vh;
+      left: -5%;
+      width: 40%;
+      background-color: #FFF;
+      border: 8px solid $colorBlueAccent;
+      padding: 22px;
+      z-index: 1;
+      @include medium {
+        top: 4vh;
+        left: 0;
+        margin: 0 auto;
+        width: 90%;
+      }
+      h1 {
+        color: $colorBlueAccent;
+      }
+      a {
+        font-weight: 600;
+        display: block;
+        margin-top: 10px;
+      }
+    }
+    #about__images {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 70%;
+      background: $colorBlueAccent;
+      z-index: 0;
+      @include medium {
+        top: 300px;
+        bottom: auto;
+        height: 100vh;
+        min-height: 600px;
+        width: 100%;
+      }
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        opacity: 0.85;
+        border: 1px solid #DDD;
+      }
+    }
+  }
+  #project, #blogpost {
+    margin-top: 0;
+    #project__images, #blogpost__images {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background-color: lighten($colorBlueLight, 12%);
+      #images__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        i {
+          font-size: 2.4em;
+          padding: 14px;
+          cursor: pointer;
+        }
+        .arrow {
+          visibility: hidden;
+        }
+        .arrow.active {
+          visibility: visible;
+        }
+      }
+      #images {
+        position: relative;
+        height: 55vh;
+        min-height: 280px;
+        @include large {
+          height: 40vh;
+        }
+        @include medium {
+          height: 30vh;
+        }
+        @include small {
+          height: 20vh;
+        }
+        div{
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          img {
+            object-fit: scale-down;
+            height: 70vh;
+            max-height: 100%;
+            width: 100%;
+          }
+        }
+      }
+      margin-bottom: 50px;
+    }
+    #blogpost__images {
+      #images {
+        height: 40vw;
+        min-height: 240px;
+        max-height: 580px;
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+          max-height: initial;
+        }
+      }
+    }
+    #blogpost__gallery {
+      margin-top: 50px;
+    }
+    #project__details, #blogpost__details {
+      margin-bottom: 50px;
+    }
+    #project__details {
+      .project__link {
+        font-size: 1.6em;
+        display: inline-block;
+        margin-top: 20px;
+      }
+    }
+  }
+  #notFound {
+    text-align: center;
+    transform: translateY(-50%);
+    margin-top: calc((100vh - #{$headerHeight}) / 2);
+    @include large {
+      margin-top: calc((100vh - (#{$headerHeight} * 1.2)) / 2);
+    }
+    @include medium {
+      margin-top: calc((100vh - (#{$headerHeight} * 1.5)) / 2);
+    }
+    h1, h2 {
+      line-height: 0.5em;
+    }
+    h1 {
+      font-size: 6em;
+      color: $colorBlueAccent;
+    }
+    h2 {
+      font-size: 1.6em;
+      color: $colorBlueLight;
+    }
+  }
+}

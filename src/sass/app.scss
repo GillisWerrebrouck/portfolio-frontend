@@ -1,0 +1,64 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+@import "media_queries";
+@import "header";
+@import "main";
+
+* {
+  transition: all 0.2s;
+}
+
+::selection {
+  background: $colorBlueLight;
+  color: #FFF;
+}
+
+::-moz-selection {
+  background: $colorBlueLight;
+  color: #FFF;
+}
+
+body {
+  font-family: 'Gudea', sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.4em;
+  margin-top: 8px;
+  & + p {
+    margin-top: 14px;
+  }
+}
+
+p + h3 {
+  margin-top: 5px;
+}
+h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  font-weight: 200;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-position: under;
+  text-decoration-color: #444;
+}
+
+a {
+  text-decoration: none;
+  color: $colorBlueLight;
+  &:hover {
+    color: $colorBlueAccent;
+  }
+}
+
+img {
+  image-orientation: from-image;
+  object-fit: cover;
+}

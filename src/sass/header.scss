@@ -1,0 +1,97 @@
+header {
+  position: relative;
+  border-bottom: 1px solid #DDD;
+  h1 {
+    position: absolute;
+    top: calc(#{$headerHeight} / 2);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+    font-size: 1.6em;
+    margin: 0;
+    display: inline-block;
+    z-index: 0;
+  }
+  > div {
+    position: relative;
+    width: $defaultWidth;
+    max-width: $maxWidth;
+    @include large {
+      width: $largeWidth;
+    }
+    @include medium {
+      width: $mediumWidth;
+    }
+    @include small {
+      width: $smallWidth;
+    }
+    margin: 0 auto;
+    > div {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: $headerHeight;
+      z-index: 1;
+      @include large {
+        align-items: flex-end;
+        height: $headerHeight * 1.2;
+        margin-bottom: 20px;
+      }
+      @include medium {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: $headerHeight * 1.5;
+      }
+      nav {
+        &:not(:last-child) {
+          @include medium {
+            margin-bottom: 12px;
+          }
+        }
+        &.menu {
+          text-align: center;
+          ul {
+            a {
+              font-size: 1.1em;
+              font-weight: 600;
+              padding: 15px 20px;
+              color: $colorBlueLight;
+              &:hover {
+                color: $colorBlueAccent;
+              }
+              &.active {
+                color: $colorBlueAccent;
+                li {
+                  text-decoration: underline;
+                  text-decoration-style: wavy;
+                  -webkit-text-underline-position: under;
+                  text-underline-position: under;
+                  text-decoration-color: $colorMustardAccent;
+                }
+              }
+            }
+          }
+        }
+        
+        ul {
+          a {
+            padding: 8px;
+            li {
+              display: inline-block;
+            }
+            i {
+              color: #333;
+              font-size: 1.4em;
+              &:hover {
+                color: $colorBlueAccent;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
